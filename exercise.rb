@@ -16,8 +16,8 @@ class Exercise
       result_map["#{exp}"] = last_el
       @get_max_size = [result_map.size, @get_max_size].max
     end
-    max_val = build_max_for(result_map) + 1
-    find_in_range(result_map, Random.rand(max_val))
+    max_val = build_max_for(result_map)
+    find_in_range(result_map, Random.rand(max_val) + 1)
   end
 
   def find_in_range(map,value_to_find)

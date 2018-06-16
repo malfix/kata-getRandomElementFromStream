@@ -9,8 +9,7 @@ class TestExercise < Test::Unit::TestCase
   test 'simple 2 elements' do
     assert_try_with 2, 1000
   end
-
-
+  
   test 'simple 3 elements' do
     assert_try_with 3, 3000
   end
@@ -19,9 +18,9 @@ class TestExercise < Test::Unit::TestCase
     assert_try_with 10, 10000
   end
 
-    test 'simple 9 elements' do
-      assert_try_with 9, 9000
-    end
+  test 'simple 9 elements' do
+    assert_try_with 9, 9000
+  end
 
 
   test 'simple 17 elements' do
