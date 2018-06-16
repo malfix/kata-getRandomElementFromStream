@@ -19,8 +19,13 @@ class TestExercise < Test::Unit::TestCase
     assert_try_with 10, 10000
   end
 
-  test 'simple 256 elements' do
-    assert_try_with 128, 128000
+    test 'simple 9 elements' do
+      assert_try_with 9, 9000
+    end
+
+
+  test 'simple 17 elements' do
+    assert_try_with 17, 17000
   end
 
   test 'find in range' do
@@ -43,7 +48,7 @@ class TestExercise < Test::Unit::TestCase
   end
 
   def random_array(max)
-    (1...(max+1)).to_a.shuffle
+    (1...(max+1)).to_a
   end
 
   def assert_try_with(size, throws)
@@ -55,7 +60,6 @@ class TestExercise < Test::Unit::TestCase
     lower_limit = throws/size*0.9
     upper_limit = throws/size*1.1
     results.each do |k,v|
-      puts v
       assert v > lower_limit, "si è rotto per i valori #{k} => #{v}"
       assert v < upper_limit, "si è rotto per i valori #{k} => #{v}"
     end
