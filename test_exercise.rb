@@ -3,13 +3,21 @@ require "test/unit"
 
 class TestExercise < Test::Unit::TestCase
   test 'simple' do
-    assert_equal(1, Exercise.new().pick_random(random_array(1)))
+    el = Exercise.new()
+    assert_equal(1, el.pick_random(random_array(1)))
+    assert_equal(1, el.max_size)
+  end
+
+  test 'test max size' do
+    el = Exercise.new()
+    el.pick_random(random_array(100000))
+    assert_equal(16, el.max_size)
   end
 
   test 'simple 2 elements' do
     assert_try_with 2, 1000
   end
-  
+
   test 'simple 3 elements' do
     assert_try_with 3, 3000
   end
