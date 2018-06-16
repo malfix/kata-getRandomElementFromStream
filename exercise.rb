@@ -2,16 +2,40 @@ class Exercise
   def initialize
   end
 
-  def pick_random(*stream)
-    #{'128': 1, '2': 2}
+  def pick_random(stream)
     result_map = {}
     stream.each do |el|
-      exp=0
-      while (result_map["#{exp}"])
-        
-        exp+=1
+      exp = 0
+      last_el = el
+      key = "#{exp}"
+      while (result_map[key])
+        last_el = [result_map.delete(key), el].shuffle[0]
+        exp += 1
       end
-      result_map["#{exp}"]
+      result_map[key] = last_el
     end
+    max_val = build_max_for(result_map) + 1
+    find_in_range(result_map, Random.rand(max_val))
+  end
+
+  def find_in_range(map,value_to_find)
+    value = value_to_find
+    map.keys.sort.each do |k|
+      actual = k.to_s.to_i
+      pow = 2 ** actual
+      value -= pow
+      return map[k] if value <= 0
+    end
+    nil
+  end
+
+  def build_max_for(map)
+    value = 0
+    map.keys.each do |k|
+      actual = k.to_s.to_i
+      pow = 2 ** actual
+      value += pow
+    end
+    value
   end
 end
