@@ -11,7 +11,7 @@ class TestExercise < Test::Unit::TestCase
   test 'test max size' do
     el = Exercise.new()
     el.pick_random(random_array(100000))
-    assert_equal(16, el.max_size)
+    assert_equal(6, el.max_size)
   end
 
   test 'simple 2 elements' do
